@@ -1,0 +1,3 @@
+langchain以及其他环境，自备一个openaikey
+进入到fchat目录打开控制台输入npm install
+在npm start
