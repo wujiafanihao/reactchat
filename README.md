@@ -5,3 +5,4 @@ langchain以及其他环境，自备一个openaikey
 然后
 OPENAI_BASE_URL=
 OPENAI_API_KEY=
+请自行安装npm install react-icons
