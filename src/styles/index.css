@@ -1,0 +1,252 @@
+/* styles.css */
+@import 'highlight.js/styles/default.css';
+:root {
+  --background-color: #fff;
+  --text-color: #212121;
+  /* 添加过渡效果 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+  --background-color: #212121;
+  --text-color: #fff;
+}
+
+body, html {
+  height: 100%; /* 使整个应用占满视口 */
+  margin: 0;
+}
+
+.chat-app {
+  display: flex;
+  flex-direction: column; /* 垂直方向布局 */
+  height: 100%; /* 使聊天应用占满视口 */
+  padding: 20px;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 80vh; /* 设置最大高度为视口高度的80%，超出部分滚动 */
+  width: 45%; /* 让聊天窗口宽度充满父容器 */
+  margin: auto; /* 将 chat-window 居中 */
+  margin-top: 60px;
+}
+.chat-window::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.message p {
+  margin: 0;
+}
+
+/* 垂直居中对齐 */
+.message-input {
+  display: flex;
+  align-items: center;
+  /* 添加内边距 */
+  padding: 30px;
+  /* 设置为固定定位 */
+  position: fixed;
+  /* 调整为更大的宽度，可以根据需要调整百分比 */
+  width: 55%;
+  /* 水平居中 */
+  margin: auto;
+  /* 左边距为0，使其完全水平居中 */
+  margin-left: 450px;
+  left: 0;
+  /* 右边距为0，使其完全水平居中 */
+  right: 0;
+  /* 放置在底部 */
+  bottom: 0;
+  /* 确保位于其他内容之上 */
+  z-index: 1;
+  font-weight: bolder;
+}
+
+/* 使用弹性布局，使输入框自适应宽度 */
+.message-input textarea {
+  flex: 1;
+  padding: 10px;
+  border-radius: 15px;
+  border: #464343 1px solid;
+  background-color: var(--background-color);/* 使用变量 */
+  color: var(--text-color); /* 使用变量 */
+  font-size: 18px;
+  font-style: initial;
+  font-weight: 550;
+  max-height: 200px; /* 最大高度限制为 200px */
+  overflow-y: auto; /* 显示垂直滚动条，根据内容自动显示 */
+  scrollbar-width: none; /* 隐藏滚动条 */
+  -ms-overflow-style: none; /* 隐藏滚动条(适用于IE和Edge) */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-indent: 10px; /* 控制文本的水平间距 */
+}
+
+/* Webkit浏览器(Chrome/Safari)的滚动条样式 */
+.message-input textarea::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
+}
+
+
+.message-input button {
+  padding: 10px 20px;
+  /* 负边距将按钮移动到输入框内部 */
+  margin-left: -60px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background-color);/* 使用变量 */
+  color: var(--text-color); /* 使用变量 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 添加响应式设计 */
+@media screen and (max-width: 600px) {
+  .message-input textarea,
+  .message-input button {
+    /* 缩小按钮和输入框字体大小 */
+    font-size: 12px;
+  }
+}
+
+.message-input textarea:focus {
+  outline: none; /* 移除焦点时的发光效果 */
+  width: 30%; /* 100%宽度 */
+  height: 30%;
+}
+
+.message-input button:hover {
+  background-color: #b7b9bb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.heading{
+  margin-top: -20px;
+  width: 100%;
+  position: fixed;
+}
+.app-header h1 {
+  position: fixed;
+  align-items: flex-start;
+  margin-left: 10px;
+  transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.app-header h1:hover {
+  transform: scale(1.2); /* 悬停时放大 */
+}
+
+.switch {
+  position: relative; /* 使用相对定位 */
+  margin-top: 25px;
+  margin-right: 50px;
+  float: right; /* 将按钮向右浮动 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  outline: none;
+  margin-left: auto; /* 将月亮图标推向 Header 的最右边 */
+  font-size: 24px; /* 增大图标大小 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.switch:hover {
+  transform: scale(1.3); /* 鼠标悬停时放大 */
+  animation: rotate360 0.5s; /* 动画名称，0.5秒完成旋转 */
+}
+
+.input-text{
+  position: fixed;
+  bottom: 10px;
+  left: 42%;
+  color: var(--text-color); /* 使用变量 */
+  font-size: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 样式调整 */
+.message .message-content {
+  align-items: flex-start; /* 垂直顶部对齐 */
+}
+
+.message .avatar-wrapper {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  margin-right: 10px; /* 调整头像和发送者名称之间的间距 */
+}
+
+.message .avatar {
+  /* 头像样式 */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: -10px;
+}
+
+.message .sender-name {
+  /* 发送者名称的样式 */
+  font-weight: bold;
+  margin-left: 2px; /* 调整发送者名称和消息内容之间的间距 */
+}
+
+.message .message-text {
+  /* 消息内容的样式 */
+  font-weight: 500;
+  margin: 10px 0; /* 调整消息内容上下间距 */
+  padding-left: 35px;
+}
+/* 设置代码块的背景颜色为黑色 */
+pre {
+  --background-color: #212121;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+/* Webkit浏览器(Chrome/Safari)的滚动条样式 */
+pre::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
+}
+pre code {
+  font-family: 'JetBrains Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+.copy-button{
+  position: relative;
+  bottom: -30px;
+  left: 728px;
+  margin-right: 0;
+
+}
+
+.scroll-to-bottom {
+  position: fixed;
+  bottom: 100px; /* 距离底部的距离 */
+  right: 48%; /* 距离右侧的距离 */
+  border: #464343 1px solid;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.scroll-to-bottom:hover {
+  background-color: #ccc; /* 鼠标悬停时的背景颜色 */
+}
